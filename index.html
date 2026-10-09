@@ -34,7 +34,7 @@
         <!-- РАЗДЕЛ 2. ПРИВЕТСТВИЕ И ВОПРОСЫ ДЛЯ ВЫБОРКИ -->
         <div class="step active" id="step0">
             <h2>Привет!</h2>
-            <p>Пожалуйста, удели 3–5 минут этой анкете. Мы исследуем особенности восприятия семантики языковых категорий. Опрос полностью анонимный, все данные будут использованы исключительно в обобщенном виде для учебного проекта. Заранее спасибо за участие!</p>
+            <p>Пожалуйста, удели 3–5 минут этой анкете. Мы исследуем особенности семантики языковых категорий. Опрос полностью анонимный. Заранее спасибо за участие!</p>
             <div class="btn-container"><button type="button" onclick="nextStep(0)">Начать</button></div>
         </div>
 
@@ -143,63 +143,63 @@
         <!-- РАЗДЕЛ 5. АНГЛИЙСКИЙ ЛЕКСИКОН И СКРИПТЫ -->
         <div class="step" id="step4">
             <h2>SECTION 4. Symmetric Scaling</h2>
-            <div class="instruction">Instruction: Rate on a scale from 1 (not typical at all) to 7 (perfect example) how much each item represents your intuitive understanding of the category.</div>
+            <div class="instruction">Instruction: Rate on a scale from 1 (not typical at all) to 7 (the perfect example) how much each item represents your understanding of the category.</div>
             
             <h3>Category "SUCCESS"</h3>
             <div class="scale-container">
-                <div>Hard work & achieving goals</div>
+                <div>Hard work and achieving your goals</div>
                 <div class="scale-options" id="en_success_hardwork"></div>
             </div>
             <div class="scale-container">
-                <div>Wealth & money</div>
+                <div>Wealth and money</div>
                 <div class="scale-options" id="en_success_wealth"></div>
             </div>
             <div class="scale-container">
-                <div>Luck & good fortune</div>
+                <div>Luck and good fortune</div>
                 <div class="scale-options" id="en_success_luck"></div>
             </div>
             <div class="scale-container">
-                <div>Social recognition & fame</div>
+                <div>Social recognition and fame</div>
                 <div class="scale-options" id="en_success_fame"></div>
             </div>
             <div class="scale-container">
-                <div>Career promotion & status</div>
+                <div>Career promotion and status</div>
                 <div class="scale-options" id="en_success_career"></div>
             </div>
 
             <h3>Category "JUSTICE"</h3>
             <div class="scale-container">
-                <div>Moral truth & conscience</div>
+                <div>Moral truth and conscience</div>
                 <div class="scale-options" id="en_justice_conscience"></div>
             </div>
             <div class="scale-container">
-                <div>Law, courts & legal system</div>
+                <div>Law, courts and legal system</div>
                 <div class="scale-options" id="en_justice_law"></div>
             </div>
             <div class="scale-container">
-                <div>Fair play & equal rules</div>
+                <div>Fair play and equal rules</div>
                 <div class="scale-options" id="en_justice_fairplay"></div>
             </div>
             <div class="scale-container">
-                <div>Retribution & revenge</div>
+                <div>Retribution and revenge</div>
                 <div class="scale-options" id="en_justice_revenge"></div>
             </div>
 
             <h3>Category "FREEDOM"</h3>
             <div class="scale-container">
-                <div>Will, open space & feeling of flight</div>
+                <div>Will, open space and feeling of flight</div>
                 <div class="scale-options" id="en_freedom_space"></div>
             </div>
             <div class="scale-container">
-                <div>Choice, independence & personal choices</div>
+                <div>Choice, independence and personal choices</div>
                 <div class="scale-options" id="en_freedom_choice"></div>
             </div>
             <div class="scale-container">
-                <div>Holidays, leisure & lack of obligations</div>
+                <div>Holidays, leisure time and lack of obligations</div>
                 <div class="scale-options" id="en_freedom_leisure"></div>
             </div>
             <div class="scale-container">
-                <div>Liberty, human rights & equal rules</div>
+                <div>Liberty, human rights and equal rules</div>
                 <div class="scale-options" id="en_freedom_rights"></div>
             </div>
             <div class="btn-container"><button type="submit">Submit</button></div>
@@ -271,7 +271,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(object)
         }).then(() => {
-            document.querySelector('.container').innerHTML = "<h2>Thank you! / Спасибо!</h2><p>Ваши ответы успешно сохранены. Данные будут использованы в обобщенном виде для учебного проекта.</p>";
+            document.querySelector('.container').innerHTML = "<h2>Thank you! / Спасибо!</h2><p>Ваши ответы успешно сохранены.</p>";
         }).catch(err => {
             alert("Ошибка при отправке. Пожалуйста, попробуйте еще раз.");
             submitBtn.disabled = false;
