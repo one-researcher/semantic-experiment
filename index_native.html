@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Research Study</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.5; padding: 20px; }
+        .container { max-width: 650px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .step { display: none; }
+        .step.active { display: block; }
+        h2, h3 { color: #000; margin-top: 25px; }
+        .instruction { font-style: italic; color: #515154; margin-bottom: 20px; background: #f0f0f2; padding: 10px 15px; border-radius: 6px; }
+        .question-block { margin-bottom: 25px; }
+        .radio-group { display: flex; gap: 15px; margin-top: 5px; }
+        .scale-container { margin: 15px 0; background: #fafafa; padding: 12px; border-radius: 8px; border: 1px solid #e5e5ea; }
+        .scale-row { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+        .scale-options { display: flex; gap: 10px; }
+        .scale-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .scale-item input { margin-bottom: 4px; }
+        .scale-label { font-size: 0.85em; color: #86868b; width: 100%; display: flex; justify-content: space-between; font-weight: 500; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #d2d2d7; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
+        button { background: #0071e3; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: 500; margin-top: 20px; }
+        button:hover { background: #0077ed; }
+        button:disabled { background: #aeaeaf; cursor: not-allowed; }
+        .btn-container { display: flex; justify-content: flex-end; }
+        .warning-msg { color: #ff3b30; background: #ffe5e5; padding: 10px 15px; border-radius: 6px; margin-top: 15px; font-weight: 500; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="expForm">
+        <!-- WELCOME STEP -->
+        <div class="step active" id="step0">
+            <h2>Welcome!</h2>
+            <p>Please take 3–5 minutes to complete this survey. We are investigating how linguistic categories are perceived semantically. The survey is completely anonymous, and all data will be used strictly in an aggregated form for an academic research project. Thank you in advance for your participation!</p>
+            <div class="btn-container"><button type="button" onclick="nextStep(0)">Start</button></div>
+        </div>
+
+        <!-- SECTION 1. VERIFICATION -->
+        <div class="step" id="step1">
+            <h2>SECTION 1. Sample Verification</h2>
+            <div class="question-block">
+                <label><b>Is English your native language (mother tongue)?</b></label>
+                <div class="radio-group">
+                    <label><input type="radio" name="native_speaker" value="yes" onclick="checkNativeStatus(true)" required> Yes</label>
+                    <label><input type="radio" name="native_speaker" value="no" onclick="checkNativeStatus(false)"> No</label>
+                </div>
+                <div id="screeningWarning" class="warning-msg">
+                    Thank you for your interest! However, this specific study requires participants to be native English speakers. You do not need to proceed.
+                </div>
+            </div>
+            <div class="btn-container"><button type="button" id="nextBtnStep1" onclick="nextStep(1)">Next</button></div>
+        </div>
+
+        <!-- SECTION 2. SCALING -->
+        <div class="step" id="step2">
+            <h2>SECTION 2. Semantic Scaling</h2>
+            <div class="instruction">Instruction: Rate on a scale from 1 (not typical at all) to 7 (perfect example) how much each item represents your intuitive understanding of the category.</div>
+            
+            <h3>Category "SUCCESS"</h3>
+            <div class="scale-container">
+                <div>Wealth & money</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (not typical)</span><span>7 (perfect example)</span></div></div>
+                <div class="scale-options" id="en_success_wealth"></div>
+            </div>
+            <div class="scale-container">
+                <div>Luck & good fortune</div>
+                <div class="scale-options" id="en_success_luck"></div>
+            </div>
+            <div class="scale-container">
+                <div>Social recognition & fame</div>
+                <div class="scale-options" id="en_success_fame"></div>
+            </div>
+            <div class="scale-container">
+                <div>Career promotion & status</div>
+                <div class="scale-options" id="en_success_career"></div>
+            </div>
+
+            <h3>Category "JUSTICE"</h3>
+            <div class="scale-container">
+                <div>Moral truth & conscience</div>
+                <div class="scale-options" id="en_justice_conscience"></div>
+            </div>
+            <div class="scale-container">
+                <div>Law, courts & legal system</div>
+                <div class="scale-options" id="en_justice_law"></div>
+            </div>
+            <div class="scale-container">
+                <div>Fair play & equal rules</div>
+                <div class="scale-options" id="en_justice_fairplay"></div>
+            </div>
+            <div class="scale-container">
+                <div>Retribution & revenge</div>
+                <div class="scale-options" id="en_justice_revenge"></div>
+            </div>
+
+            <h3>Category "FREEDOM"</h3>
+            <div class="scale-container">
+                <div>Will, open space & feeling of flight</div>
+                <div class="scale-options" id="en_freedom_space"></div>
+            </div>
+            <div class="scale-container">
+                <div>Choice, independence & personal choices</div>
+                <div class="scale-options" id="en_freedom_choice"></div>
+            </div>
+            <div class="scale-container">
+                <div>Holidays, leisure & lack of obligations</div>
+                <div class="scale-options" id="en_freedom_leisure"></div>
+            </div>
+            <div class="scale-container">
+                <div>Liberty, human rights & equal rules</div>
+                <div class="scale-options" id="en_freedom_rights"></div>
+            </div>
+
+            <div class="btn-container"><button type="submit">Submit</button></div>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Replace this URL with your NEW Google Apps Script Web App URL!
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIsRg51NyGg0Wca1cZfBUMYkCyKBbQbJfNDGhnm8FWayky1rHC9tDCHP_zLhVkwTNK/exec";
+
+   // Auto-generate 1-7 scales
+    const scaleContainers = document.querySelectorAll('.scale-options');
+    scaleContainers.forEach(container => {
+        const name = container.id;
+        let html = '';
+        for(let i=1; i<=7; i++) {
+            html += '<label class="scale-item"><input type="radio" name="' + name + '" value="' + i + '" required><span>' + i + '</span></label>';
+        }
+        container.innerHTML = html;
+    });
+
+    // Screening logic for native speakers
+    function checkNativeStatus(isNative) {
+        const nextBtn = document.getElementById('nextBtnStep1');
+        const warning = document.getElementById('screeningWarning');
+        if (nextBtn && warning) {
+            if (isNative) {
+                nextBtn.disabled = false;
+                warning.style.display = 'none';
+            } else {
+                nextBtn.disabled = true;
+                warning.style.display = 'block';
+            }
+        }
+    }
+
+    // Step switching with validation
+    function nextStep(currentStepNum) {
+        const currentStep = document.getElementById('step' + currentStepNum);
+        if (!currentStep) return;
+
+        const inputs = currentStep.querySelectorAll('input');
+        let valid = true;
+        
+        const namesChecked = new Set();
+        inputs.forEach(input => {
+            if(input.hasAttribute('required')) {
+                if(input.type === 'radio') {
+                    namesChecked.add(input.name);
+                } else if (!input.value.trim()) {
+                    valid = false;
+                }
+            }
+        });
+        
+        namesChecked.forEach(name => {
+            if(!document.querySelector('input[name="' + name + '"]:checked')) valid = false;
+        });
+
+        if(!valid) {
+            alert("Please answer all questions before proceeding to the next section.");
+            return;
+        }
+
+        currentStep.classList.remove('active');
+        const nextStepEl = document.getElementById('step' + (currentStepNum + 1));
+        if (nextStepEl) {
+            nextStepEl.classList.add('active');
+        }
+        window.scrollTo(0,0);
+    }
+
+    // Submit data to Google Sheets
+    document.getElementById('expForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Sending...";
+
+        const formData = new FormData(e.target);
+        const object = {};
+        formData.forEach((value, key) => object[key] = value);
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            cache: 'no-cache',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(object)
+        }).then(() => {
+            document.querySelector('.container').innerHTML = "<h2>Thank you!</h2><p>Your answers have been successfully recorded. Your contribution to this academic study is highly appreciated.</p>";
+        }).catch(err => {
+            alert("An error occurred while sending. Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Submit";
+        });
+    });
+</script>
