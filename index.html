@@ -1,4 +1,3 @@
-<!-- РАЗДЕЛ 1. ПОДГОТОВИТЕЛЬНЫЙ КОД (Технические теги и стили) -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -33,13 +32,16 @@
 <div class="container">
     <form id="expForm">
 
-        <!-- РАЗДЕЛ 2. ПРИВЕТСТВИЕ И ВОПРОСЫ ДЛЯ ВЫБОРКИ -->
+        <!-- ШАГ 0: ПРИВЕТСТВИЕ -->
         <div class="step active" id="step0">
             <h2>Привет!</h2>
             <p>Пожалуйста, удели 3–5 минут этой анкете. Мы исследуем особенности семантики языковых категорий. Опрос полностью анонимный. Заранее спасибо за участие!</p>
-            <div class="btn-container"><button type="button" onclick="nextStep(0)">Начать</button></div>
+            <div class="btn-container">
+                <button type="button" onclick="nextStep(0)">Начать</button>
+            </div>
         </div>
 
+        <!-- ШАГ 1: ВЕРИФИКАЦИЯ ВЫБОРКИ -->
         <div class="step" id="step1">
             <h2>РАЗДЕЛ 1. Вводный (Верификация выборки)</h2>
             <div class="question-block">
@@ -59,10 +61,12 @@
                     <label><input type="radio" name="start_age" value="18 лет и старше"> 18 лет и старше</label>
                 </div>
             </div>
-            <div class="btn-container"><button type="button" onclick="nextStep(1)">Далее</button></div>
+            <div class="btn-container">
+                <button type="button" onclick="nextStep(1)">Далее</button>
+            </div>
         </div>
 
-        <!-- РАЗДЕЛ 3. РУССКИЙ ЛЕКСИКОН -->
+        <!-- ШАГ 2: РУССКИЙ ЛЕКСИКОН -->
         <div class="step" id="step2">
             <h2>РАЗДЕЛ 2. Русский лексикон</h2>
             <div class="instruction">Инструкция: Оцените по шкале от 1 (абсолютно не типично) до 7 (идеальный пример), насколько данное слово/явление соответствует вашему внутреннему пониманию слова.</div>
@@ -96,7 +100,7 @@
 
             <h3>Категория «СПРАВЕДЛИВОСТЬ»</h3>
             <div class="scale-container">
-                <div>Законность, official суд</div>
+                <div>Законность, официальный суд</div>
                 <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_justice_law"></div>
             </div>
@@ -137,10 +141,12 @@
                 <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_freedom_leisure"></div>
             </div>
-            <div class="btn-container"><button type="button" onclick="nextStep(2)">Далее</button></div>
+            <div class="btn-container">
+                <button type="button" onclick="nextStep(2)">Далее</button>
+            </div>
         </div>
 
-        <!-- РАЗДЕЛ 4. ДИСТРАКТОРЫ -->
+        <!-- ШАГ 3: ДИСТРАКТОРЫ -->
         <div class="step" id="step3">
             <h2>SECTION 3. Distractors</h2>
             <div class="instruction">Please answer the questions in English.</div>
@@ -152,23 +158,25 @@
                 <label><b>How many hours a week do you spend consuming English media?</b></label>
                 <input type="text" name="distractor_hours" required>
             </div>
-            <!-- Тут теперь вызывается финальная отправка всей формы -->
-            <div class="btn-container"><button type="submit" id="submitBtn">Отправить ответы</button></div>
+            <div class="btn-container">
+                <button type="submit" id="submitBtn">Отправить ответы</button>
+            </div>
         </div>
-<!-- ШАГ 4: ФИНАЛЬНЫЙ ЭКРАН С КОДОМ PROLIFIC (Скрыт до момента отправки) -->
+
+        <!-- ШАГ 4: ФИНАЛЬНЫЙ ЭКРАН С КОДОМ (Теперь он ЗАЩИЩЕН) -->
         <div class="step" id="step4">
-            <h2>Спасибо за участие!</h2>
-            <p>Ваши ответы успешно отправлены и сохранены. Вот ваш код завершения исследования для Prolific:</p>
-            <div class="prolific-box">C146CJX5</div>
-            <p style="margin-top: 15px; font-size: 14px; color: #86868b; text-align: center;">Скопируйте этот код и вставьте его обратно на сайте Prolific, чтобы завершить отправку задания.</p>
+            <h2>Thank you!</h2>
+            <p>Your data has been successfully saved. Here is your completion code for Prolific:</p>
+            <div class="prolific-box">CSNZOGTG</div>
+            <p style="margin-top: 15px; font-size: 14px; color: #86868b; text-align: center;">Copy this code and paste it back into Prolific to complete your submission.</p>
         </div>
 
     </form>
 </div>
 
 <script>
-    // Замени на URL своего Google Скрипта для НОВОЙ (русской) таблицы
-    const SCRIPT_URL = "https://google.com";
+    // Твой URL Google Скрипта для таблицы билингвов
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_8hQ04cSMe3wr4toir9xjvkOZhKG3gxD-oRcp9cJQK4Qw1fKb5pDvxpSBJSzdZVVE/exec";
 
     // Авто-генерация шкал 1-7
     const scaleContainers = document.querySelectorAll('.scale-options');
@@ -181,13 +189,23 @@
         container.innerHTML = html;
     });
 
-    // Переключение шагов с валидацией полей
+    // Функция переключения шагов
     function nextStep(currentStepNum) {
         const currentStep = document.getElementById('step' + currentStepNum);
+        
+        // Для приветственного экрана проверку полей не делаем
+        if (currentStepNum === 0) {
+            currentStep.classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            window.scrollTo(0,0);
+            return;
+        }
+
+        // Валидация полей текущего шага перед переходом
         const inputs = currentStep.querySelectorAll('input');
         let valid = true;
-        
         const namesChecked = new Set();
+        
         inputs.forEach(input => {
             if(input.hasAttribute('required')) {
                 if(input.type === 'radio') {
@@ -212,7 +230,7 @@
         window.scrollTo(0,0);
     }
 
-    // Обработка финальной отправки формы в Google Скрипт
+    // Финальная отправка формы
     document.getElementById('expForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const submitBtn = document.getElementById('submitBtn');
@@ -226,13 +244,13 @@
             searchParams.append(key, value);
         }
 
-        // Отправка запроса (GET no-cors метод)
+        // Отправка в Google Таблицу методом GET no-cors
         fetch(`${SCRIPT_URL}?${searchParams.toString()}`, {
             method: 'GET',
             mode: 'no-cors'
         })
         .then(() => {
-            // Переключаем интерфейс со страницы дистракторов (step3) на экран благодарности с кодом (step4)
+            // Прячем дистракторы (step3), открываем "Thank you" (step4)
             document.getElementById('step3').classList.remove('active');
             document.getElementById('step4').classList.add('active');
             window.scrollTo(0,0);
