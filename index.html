@@ -207,11 +207,20 @@
     </form>
 </div>
 
+ <!-- ФИНАЛЬНЫЙ ЭКРАН -->
+    <div id="thank-you-screen">
+        <h2>Thank you!</h2>
+        <p>Your data has been successfully saved. Here is your completion code for Prolific:</p>
+        <!-- ВСТАВЬ СВОЙ КОД ИЗ PROLIFIC ВМЕСТО ЭТОГО -->
+        <div class="prolific-box">CSNZOGTG</div>
+        <p style="margin-top: 15px; font-size: 14px; color: #86868b; text-align: center;">Copy this code and paste it back into Prolific to complete your submission.</p>
+    </div>
+</div>
+
 <script>
-    // Замените этот URL на ваш URL из Google Apps Script!
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_8hQ04cSMe3wr4toir9xjvkOZhKG3gxD-oRcp9cJQK4Qw1fKb5pDvxpSBJSzdZVVE/exec";
 
-    // Авто-генерация шкал 1-7
+    // Автоматически генерируем кружочки от 1 до 7
     const scaleContainers = document.querySelectorAll('.scale-options');
     scaleContainers.forEach(container => {
         const name = container.id;
@@ -222,60 +231,36 @@
         container.innerHTML = html;
     });
 
-    // Переключение шагов с валидацией
-    function nextStep(currentStepNum) {
-        const currentStep = document.getElementById('step' + currentStepNum);
-        const inputs = currentStep.querySelectorAll('input');
-        let valid = true;
-        
-        const namesChecked = new Set();
-        inputs.forEach(input => {
-            if(input.hasAttribute('required')) {
-                if(input.type === 'radio') {
-                    namesChecked.add(input.name);
-                } else if (!input.value.trim()) {
-                    valid = false;
-                }
-            }
-        });
-        
-        namesChecked.forEach(name => {
-            if(!document.querySelector('input[name="' + name + '"]:checked')) valid = false;
-        });
-
-        if(!valid) {
-            alert("Пожалуйста, ответьте на все вопросы перед переходом к следующему разделу.");
-            return;
-        }
-
-        currentStep.classList.remove('active');
-        document.getElementById('step' + (currentStepNum + 1)).classList.add('active');
-        window.scrollTo(0,0);
-    }
-
-    // Отправка данных в Google Таблицу
+    // Обработка отправки формы
     document.getElementById('expForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const submitBtn = e.target.querySelector('button[type="submit"]');
+        
+        const submitBtn = document.getElementById('submitBtn');
         submitBtn.disabled = true;
-        submitBtn.innerText = "Sending...";
+        submitBtn.innerText = "Sending answers...";
 
         const formData = new FormData(e.target);
-        const object = {};
-        formData.forEach((value, key) => object[key] = value);
+        const searchParams = new URLSearchParams();
+        
+        for (const [key, value] of formData.entries()) {
+            searchParams.append(key, value);
+        }
 
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            cache: 'no-cache',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(object)
-        }).then(() => {
-            document.querySelector('.container').innerHTML = "<h2>Thank you! / Спасибо!</h2><p>Ваши ответы успешно сохранены.</p>";
-        }).catch(err => {
-            alert("Ошибка при отправке. Пожалуйста, попробуйте еще раз.");
+        // Отправка в Google Sheets
+        fetch(`${SCRIPT_URL}?${searchParams.toString()}`, {
+            method: 'GET',
+            mode: 'no-cors'
+        })
+        .then(() => {
+            document.getElementById('survey-container').style.display = 'none';
+            document.getElementById('thank-you-screen').style.display = 'block';
+            window.scrollTo(0,0);
+        })
+        .catch(err => {
+            console.error(err);
+            alert("An error occurred while saving your data. Please try again.");
             submitBtn.disabled = false;
-            submitBtn.innerText = "Submit";
+            submitBtn.innerText = "Submit Answers";
         });
     });
 </script>
