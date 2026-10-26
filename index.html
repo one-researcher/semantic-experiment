@@ -14,11 +14,12 @@
         .question-block { margin-bottom: 25px; }
         .radio-group { display: flex; gap: 15px; margin-top: 5px; }
         .scale-container { margin: 15px 0; background: #fafafa; padding: 12px; border-radius: 8px; border: 1px solid #e5e5ea; }
+        .scale-title { font-weight: 600; margin-bottom: 5px; }
         .scale-row { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
-        .scale-options { display: flex; gap: 10px; }
-        .scale-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-        .scale-item input { margin-bottom: 4px; }
-        .scale-label { font-size: 0.85em; color: #86868b; width: 100%; display: flex; justify-content: space-between; font-weight: 500; }
+        .scale-options { display: flex; justify-content: space-between; margin-top: 10px; background: #fff; padding: 10px; border-radius: 6px; border: 1px solid #f0f0f2; }
+        .scale-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; flex: 1; padding: 5px; }
+        .scale-item input { margin-bottom: 6px; cursor: pointer; }
+        .scale-labels-text { display: flex; justify-content: space-between; font-size: 0.85em; color: #86868b; margin-top: 4px; }
         input[type="text"] { width: 100%; padding: 10px; border: 1px solid #d2d2d7; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
         button { background: #0071e3; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: 500; margin-top: 20px; }
         button:hover { background: #0077ed; }
@@ -73,96 +74,86 @@
             
             <h3>Категория «УСПЕХ»</h3>
             <div class="scale-container">
-                <div>Удача, везение</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Удача, везение</div>
                 <div class="scale-options" id="ru_success_luck"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Карьерный рост, статус</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Карьерный рост, статус</div>
                 <div class="scale-options" id="ru_success_career"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Финансовый достаток</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Финансовый достаток</div>
                 <div class="scale-options" id="ru_success_wealth"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Достижение личной цели, упорный труд</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Достижение личной цели, упорный труд</div>
                 <div class="scale-options" id="ru_success_hardwork"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Признание в обществе, слава</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Признание в обществе, слава</div>
                 <div class="scale-options" id="ru_success_fame"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
 
             <h3>Категория «СПРАВЕДЛИВОСТЬ»</h3>
             <div class="scale-container">
-                <div>Законность, официальный суд</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Законность, официальный суд</div>
                 <div class="scale-options" id="ru_justice_law"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Честная игра, равные правила для всех</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Честная игра, равные правила для всех</div>
                 <div class="scale-options" id="ru_justice_fairplay"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Высшая правда, голос совести</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Высшая правда, голос совести</div>
                 <div class="scale-options" id="ru_justice_conscience"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Месть, возмездие за зло</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Месть, возмездие за зло</div>
                 <div class="scale-options" id="ru_justice_revenge"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
 
             <h3>Категория «СВОБОДА»</h3>
             <div class="scale-container">
-                <div>Выбор, независимость, личные действия</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Выбор, независимость, личные действия</div>
                 <div class="scale-options" id="ru_freedom_choice"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Воля, простор, ощущение полета</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Воля, простор, ощущение полета</div>
                 <div class="scale-options" id="ru_freedom_space"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="scale-container">
-                <div>Равноправие, права человека, закон</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Равноправие, права человека, закон</div>
                 <div class="scale-options" id="ru_freedom_rights"></div>
+                <div class="scale-labels-text"><span>1 (not typical)</span><span>7 (perfect example)</span></div>
             </div>
             <div class="scale-container">
-                <div>Каникулы, отдых, отсутствие обязательств</div>
-                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
+                <div class="scale-title">Каникулы, отдых, отсутствие обязательств</div>
                 <div class="scale-options" id="ru_freedom_leisure"></div>
+                <div class="scale-labels-text"><span>1 (не типично)</span><span>7 (идеал)</span></div>
             </div>
             <div class="btn-container">
                 <button type="button" onclick="nextStep(2)">Далее</button>
             </div>
         </div>
 
-        <!-- ШАГ 3: ДИСТРАКТОРЫ -->
+        <!-- ШАГ 3: АНГЛИЙСКИЙ ЛЕКСИКОН (Теперь он аккуратно обернут в свой шаг) -->
         <div class="step" id="step3">
-            <h2>SECTION 3. Distractors</h2>
-            <div class="instruction">Please answer the questions in English.</div>
-            <div class="question-block">
-                <label><b>What is your favorite book or movie in English?</b></label>
-                <input type="text" name="distractor_book" required>
-            </div>
-            <div class="question-block">
-                <label><b>How many hours a week do you spend consuming English media?</b></label>
-                <input type="text" name="distractor_hours" required>
-            </div>
-            <div class="btn-container">
-                <button type="submit" id="submitBtn">Отправить ответы</button>
-            </div>
-        </div>
-
+            <h2>РАЗДЕЛ 3. Английский лексикон</h2>
+            <div class="instruction">Instruction: Rate on a scale from 1 (not typical at all) to 7 (the perfect example) how much each item represents your understanding of the category.</div>
+            <!-- ШАГ 3: АНГЛИЙСКИЙ ЛЕКСИКОН (Теперь он аккуратно обернут в свой шаг) -->
+        <div class="step" id="step3">
+            <h2>РАЗДЕЛ 3. Английский лексикон</h2>
             <div class="instruction">Instruction: Rate on a scale from 1 (not typical at all) to 7 (the perfect example) how much each item represents your understanding of the category.</div>
             
             <h3>Category "SUCCESS"</h3>
@@ -235,13 +226,30 @@
                 <div class="scale-options" id="en_freedom_rights"></div>
                 <div class="scale-labels-text"><span>1 (not typical)</span><span>7 (perfect example)</span></div>
             </div>
+            <div class="btn-container">
+                <button type="button" onclick="nextStep(3)">Далее</button>
+            </div>
+        </div>
 
-            <button type="submit" id="submitBtn">Submit Answers</button>
-        </form>
-    </div>
-
-        <!-- ШАГ 4: ФИНАЛЬНЫЙ ЭКРАН С КОДОМ (Теперь он ЗАЩИЩЕН) -->
+        <!-- ШАГ 4: ДИСТРАКТОРЫ -->
         <div class="step" id="step4">
+            <h2>SECTION 4. Distractors</h2>
+            <div class="instruction">Please answer the questions in English.</div>
+            <div class="question-block">
+                <label><b>What is your favorite book or movie in English?</b></label>
+                <input type="text" name="distractor_book" required>
+            </div>
+            <div class="question-block">
+                <label><b>How many hours a week do you spend consuming English media?</b></label>
+                <input type="text" name="distractor_hours" required>
+            </div>
+            <div class="btn-container">
+                <button type="submit" id="submitBtn">Отправить ответы</button>
+            </div>
+        </div>
+
+        <!-- ШАГ 5: ФИНАЛЬНЫЙ ЭКРАН С КОДОМ PROLIFIC -->
+        <div class="step" id="step5">
             <h2>Thank you!</h2>
             <p>Your data has been successfully saved. Here is your completion code for Prolific:</p>
             <div class="prolific-box">CSNZOGTG</div>
@@ -270,7 +278,6 @@
     function nextStep(currentStepNum) {
         const currentStep = document.getElementById('step' + currentStepNum);
         
-        // Для приветственного экрана проверку полей не делаем
         if (currentStepNum === 0) {
             currentStep.classList.remove('active');
             document.getElementById('step1').classList.add('active');
@@ -278,7 +285,6 @@
             return;
         }
 
-        // Валидация полей текущего шага перед переходом
         const inputs = currentStep.querySelectorAll('input');
         let valid = true;
         const namesChecked = new Set();
@@ -321,15 +327,14 @@
             searchParams.append(key, value);
         }
 
-        // Отправка в Google Таблицу методом GET no-cors
         fetch(`${SCRIPT_URL}?${searchParams.toString()}`, {
             method: 'GET',
             mode: 'no-cors'
         })
         .then(() => {
-            // Прячем дистракторы (step3), открываем "Thank you" (step4)
-            document.getElementById('step3').classList.remove('active');
-            document.getElementById('step4').classList.add('active');
+            // Скрываем дистракторы (step4), открываем код Prolific (step5)
+            document.getElementById('step4').classList.remove('active');
+            document.getElementById('step5').classList.add('active');
             window.scrollTo(0,0);
         })
         .catch(err => {
