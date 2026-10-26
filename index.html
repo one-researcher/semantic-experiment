@@ -23,7 +23,9 @@
         input[type="text"] { width: 100%; padding: 10px; border: 1px solid #d2d2d7; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
         button { background: #0071e3; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: 500; margin-top: 20px; }
         button:hover { background: #0077ed; }
+        button:disabled { background: #aeaeaf; cursor: not-allowed; }
         .btn-container { display: flex; justify-content: flex-end; }
+        .prolific-box { background: #e3f2fd; border: 1px solid #90caf9; padding: 20px; border-radius: 8px; margin-top: 15px; font-weight: bold; text-align: center; font-size: 22px; color: #0d47a1; }
     </style>
 </head>
 <body>
@@ -73,58 +75,71 @@
             </div>
             <div class="scale-container">
                 <div>Карьерный рост, статус</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_success_career"></div>
             </div>
             <div class="scale-container">
                 <div>Финансовый достаток</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_success_wealth"></div>
             </div>
             <div class="scale-container">
                 <div>Достижение личной цели, упорный труд</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_success_hardwork"></div>
             </div>
             <div class="scale-container">
                 <div>Признание в обществе, слава</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_success_fame"></div>
             </div>
 
             <h3>Категория «СПРАВЕДЛИВОСТЬ»</h3>
             <div class="scale-container">
-                <div>Законность, официальный суд</div>
+                <div>Законность, official суд</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_justice_law"></div>
             </div>
             <div class="scale-container">
                 <div>Честная игра, равные правила для всех</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_justice_fairplay"></div>
             </div>
             <div class="scale-container">
                 <div>Высшая правда, голос совести</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_justice_conscience"></div>
             </div>
             <div class="scale-container">
                 <div>Месть, возмездие за зло</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_justice_revenge"></div>
             </div>
 
             <h3>Категория «СВОБОДА»</h3>
             <div class="scale-container">
                 <div>Выбор, независимость, личные действия</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_freedom_choice"></div>
             </div>
             <div class="scale-container">
                 <div>Воля, простор, ощущение полета</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_freedom_space"></div>
             </div>
             <div class="scale-container">
                 <div>Равноправие, права человека, закон</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_freedom_rights"></div>
             </div>
             <div class="scale-container">
                 <div>Каникулы, отдых, отсутствие обязательств</div>
+                <div class="scale-row"><div class="scale-label"><span>1 (не типично)</span><span>7 (идеал)</span></div></div>
                 <div class="scale-options" id="ru_freedom_leisure"></div>
             </div>
             <div class="btn-container"><button type="button" onclick="nextStep(2)">Далее</button></div>
         </div>
+
         <!-- РАЗДЕЛ 4. ДИСТРАКТОРЫ -->
         <div class="step" id="step3">
             <h2>SECTION 3. Distractors</h2>
@@ -137,90 +152,25 @@
                 <label><b>How many hours a week do you spend consuming English media?</b></label>
                 <input type="text" name="distractor_hours" required>
             </div>
-            <div class="btn-container"><button type="button" onclick="nextStep(3)">Next</button></div>
+            <!-- Тут теперь вызывается финальная отправка всей формы -->
+            <div class="btn-container"><button type="submit" id="submitBtn">Отправить ответы</button></div>
         </div>
-
-        <!-- РАЗДЕЛ 5. АНГЛИЙСКИЙ ЛЕКСИКОН И СКРИПТЫ -->
+<!-- ШАГ 4: ФИНАЛЬНЫЙ ЭКРАН С КОДОМ PROLIFIC (Скрыт до момента отправки) -->
         <div class="step" id="step4">
-            <h2>SECTION 4. Symmetric Scaling</h2>
-            <div class="instruction">Instruction: Rate on a scale from 1 (not typical at all) to 7 (the perfect example) how much each item represents your understanding of the category.</div>
-            
-            <h3>Category "SUCCESS"</h3>
-            <div class="scale-container">
-                <div>Hard work and achieving your goals</div>
-                <div class="scale-options" id="en_success_hardwork"></div>
-            </div>
-            <div class="scale-container">
-                <div>Wealth and money</div>
-                <div class="scale-options" id="en_success_wealth"></div>
-            </div>
-            <div class="scale-container">
-                <div>Luck and good fortune</div>
-                <div class="scale-options" id="en_success_luck"></div>
-            </div>
-            <div class="scale-container">
-                <div>Social recognition and fame</div>
-                <div class="scale-options" id="en_success_fame"></div>
-            </div>
-            <div class="scale-container">
-                <div>Career promotion and status</div>
-                <div class="scale-options" id="en_success_career"></div>
-            </div>
-
-            <h3>Category "JUSTICE"</h3>
-            <div class="scale-container">
-                <div>Moral truth and conscience</div>
-                <div class="scale-options" id="en_justice_conscience"></div>
-            </div>
-            <div class="scale-container">
-                <div>Law, courts and legal system</div>
-                <div class="scale-options" id="en_justice_law"></div>
-            </div>
-            <div class="scale-container">
-                <div>Fair play and equal rules</div>
-                <div class="scale-options" id="en_justice_fairplay"></div>
-            </div>
-            <div class="scale-container">
-                <div>Retribution and revenge</div>
-                <div class="scale-options" id="en_justice_revenge"></div>
-            </div>
-
-            <h3>Category "FREEDOM"</h3>
-            <div class="scale-container">
-                <div>Will, open space and feeling of flight</div>
-                <div class="scale-options" id="en_freedom_space"></div>
-            </div>
-            <div class="scale-container">
-                <div>Choice, independence and personal choices</div>
-                <div class="scale-options" id="en_freedom_choice"></div>
-            </div>
-            <div class="scale-container">
-                <div>Holidays, leisure time and lack of obligations</div>
-                <div class="scale-options" id="en_freedom_leisure"></div>
-            </div>
-            <div class="scale-container">
-                <div>Liberty, human rights and equal rules</div>
-                <div class="scale-options" id="en_freedom_rights"></div>
-            </div>
-            <div class="btn-container"><button type="submit">Submit</button></div>
+            <h2>Спасибо за участие!</h2>
+            <p>Ваши ответы успешно отправлены и сохранены. Вот ваш код завершения исследования для Prolific:</p>
+            <div class="prolific-box">C146CJX5</div>
+            <p style="margin-top: 15px; font-size: 14px; color: #86868b; text-align: center;">Скопируйте этот код и вставьте его обратно на сайте Prolific, чтобы завершить отправку задания.</p>
         </div>
+
     </form>
 </div>
 
- <!-- ФИНАЛЬНЫЙ ЭКРАН -->
-    <div id="thank-you-screen">
-        <h2>Thank you!</h2>
-        <p>Your data has been successfully saved. Here is your completion code for Prolific:</p>
-        <!-- ВСТАВЬ СВОЙ КОД ИЗ PROLIFIC ВМЕСТО ЭТОГО -->
-        <div class="prolific-box">CSNZOGTG</div>
-        <p style="margin-top: 15px; font-size: 14px; color: #86868b; text-align: center;">Copy this code and paste it back into Prolific to complete your submission.</p>
-    </div>
-</div>
-
 <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_8hQ04cSMe3wr4toir9xjvkOZhKG3gxD-oRcp9cJQK4Qw1fKb5pDvxpSBJSzdZVVE/exec";
+    // Замени на URL своего Google Скрипта для НОВОЙ (русской) таблицы
+    const SCRIPT_URL = "https://google.com";
 
-    // Автоматически генерируем кружочки от 1 до 7
+    // Авто-генерация шкал 1-7
     const scaleContainers = document.querySelectorAll('.scale-options');
     scaleContainers.forEach(container => {
         const name = container.id;
@@ -231,13 +181,43 @@
         container.innerHTML = html;
     });
 
-    // Обработка отправки формы
+    // Переключение шагов с валидацией полей
+    function nextStep(currentStepNum) {
+        const currentStep = document.getElementById('step' + currentStepNum);
+        const inputs = currentStep.querySelectorAll('input');
+        let valid = true;
+        
+        const namesChecked = new Set();
+        inputs.forEach(input => {
+            if(input.hasAttribute('required')) {
+                if(input.type === 'radio') {
+                    namesChecked.add(input.name);
+                } else if (!input.value.trim()) {
+                    valid = false;
+                }
+            }
+        });
+        
+        namesChecked.forEach(name => {
+            if(!document.querySelector('input[name="' + name + '"]:checked')) valid = false;
+        });
+
+        if(!valid) {
+            alert("Пожалуйста, заполните все обязательные поля на этой странице перед переходом.");
+            return;
+        }
+
+        currentStep.classList.remove('active');
+        document.getElementById('step' + (currentStepNum + 1)).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    // Обработка финальной отправки формы в Google Скрипт
     document.getElementById('expForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
         const submitBtn = document.getElementById('submitBtn');
         submitBtn.disabled = true;
-        submitBtn.innerText = "Sending answers...";
+        submitBtn.innerText = "Отправка ответов...";
 
         const formData = new FormData(e.target);
         const searchParams = new URLSearchParams();
@@ -246,21 +226,22 @@
             searchParams.append(key, value);
         }
 
-        // Отправка в Google Sheets
+        // Отправка запроса (GET no-cors метод)
         fetch(`${SCRIPT_URL}?${searchParams.toString()}`, {
             method: 'GET',
             mode: 'no-cors'
         })
         .then(() => {
-            document.getElementById('survey-container').style.display = 'none';
-            document.getElementById('thank-you-screen').style.display = 'block';
+            // Переключаем интерфейс со страницы дистракторов (step3) на экран благодарности с кодом (step4)
+            document.getElementById('step3').classList.remove('active');
+            document.getElementById('step4').classList.add('active');
             window.scrollTo(0,0);
         })
         .catch(err => {
             console.error(err);
-            alert("An error occurred while saving your data. Please try again.");
+            alert("Произошла ошибка при сохранении данных. Пожалуйста, попробуйте еще раз.");
             submitBtn.disabled = false;
-            submitBtn.innerText = "Submit Answers";
+            submitBtn.innerText = "Отправить ответы";
         });
     });
 </script>
